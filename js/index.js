@@ -17,8 +17,8 @@ function displayRepositories() {
               r.name +
           '</a> - ' +
           '<a href="#" data-repo="' +
-              r.name +
-          '"onclick=getCommits(this)>Get Commits</a></li>'
+              r.name + '" data-username="' + document.getElementById('username').value  +
+          '" onclick=getCommits(this)>Get Commits</a></li>'
     )
     .join('')}</ul>`;
   document.getElementById('repositories').innerHTML = repoList;
@@ -26,7 +26,7 @@ function displayRepositories() {
 
 function getCommits(el) {
   const name = el.dataset.repo;
-  const username = document.getElementById('username').value
+  const username = el.dataset.username;
   const req = new XMLHttpRequest();
   req.addEventListener('load', displayCommits);
   req.open('GET', 'https://api.github.com/repos/' + username + '/' + name + '/commits');

@@ -63,6 +63,11 @@ function getBranches(el) {
   req.send();
 }
 function displayBranches() {
-  console.log(this.responseText);
   const branches = JSON.parse(this.responseText);
+  const branchList = `<ul>${branches.map(
+    branch =>
+      '<li>' +
+        branch.name
+      '</li>'
+  )}</ul>`;
 }

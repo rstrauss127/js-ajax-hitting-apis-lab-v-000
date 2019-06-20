@@ -23,7 +23,7 @@ function displayRepositories() {
 
           '<a href="#" data-repository="' +
             r.name + '" data-username="' + document.getElementById('username').value  +
-          '" onclick=getBranches(this)>Get Branches</a>' + 
+          '" onclick=getBranches(this)>Get Branches</a>' +
           '</li>'
     )
     .join('')}</ul>`;
@@ -55,9 +55,14 @@ function displayCommits() {
   document.getElementById('details').innerHTML = commitList;
 }
 
-function getBranches() {
-
+function getBranches(el) {
+  const name = el.dataset.repository;
+  const username = el.dataset.username;
+  const req = new XMLHttpRequest();
+  req.addEventListener('load', displayBranches);
+  req.open('GET', 'https://api.github.com/repos/' + username + '/' + name + '/branches');
 }
 function displayBranches() {
-
+  console.log(this.responseText)
+  const branches = JSON.parse(this.responseText);
 }

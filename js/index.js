@@ -16,7 +16,7 @@ function displayRepositories() {
           '>' +
               r.name +
           '</a> - ' +
-          '<a href="#" data-repo="' +
+          '<a href="#" data-repository="' +
               r.name + '" data-username="' + document.getElementById('username').value  +
           '" onclick=getCommits(this)>Get Commits</a></li>'
     )
@@ -25,7 +25,7 @@ function displayRepositories() {
 }
 
 function getCommits(el) {
-  const name = el.dataset.repo;
+  const name = el.dataset.repository;
   const username = el.dataset.username;
   const req = new XMLHttpRequest();
   req.addEventListener('load', displayCommits);
@@ -35,10 +35,15 @@ function getCommits(el) {
 
 function displayCommits() {
   const commits = JSON.parse(this.responseText);
+  console.log(commits);
   const commitList = `<ul>${commits.map(
       commit =>
         '<li>' +
           commit.commit.message +
+          ' - ' +
+          commit.author.login +
+          ' - ' +
+          commit.commit.author.name +
         '</li>'
   ).join('')}</ul>`;
   document.getElementById('details').innerHTML = commitList;

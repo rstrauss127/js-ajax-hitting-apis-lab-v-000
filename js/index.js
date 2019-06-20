@@ -69,5 +69,6 @@ function displayBranches() {
       '<li>' +
         branch.name +
       '</li>'
-  )}</ul>`;
+  ).join('')}</ul>`;
+  document.getElementById('details').innerHTML = branchList;
 }

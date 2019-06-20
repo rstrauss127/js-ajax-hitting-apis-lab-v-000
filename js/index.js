@@ -16,9 +16,15 @@ function displayRepositories() {
           '>' +
               r.name +
           '</a> - ' +
+
           '<a href="#" data-repository="' +
               r.name + '" data-username="' + document.getElementById('username').value  +
-          '" onclick=getCommits(this)>Get Commits</a></li>'
+          '" onclick=getCommits(this)>Get Commits</a> - ' +
+
+          '<a href="#" data-repository="' +
+            r.name + '" data-username="' + document.getElementById('username').value  +
+          '" onclick=getCommits(this)>Get Commits</a> - ' + 
+          '</li>'
     )
     .join('')}</ul>`;
   document.getElementById('repositories').innerHTML = repoList;

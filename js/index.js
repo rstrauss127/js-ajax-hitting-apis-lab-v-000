@@ -67,7 +67,7 @@ function displayBranches() {
   const branchList = `<ul>${branches.map(
     branch =>
       '<li>' +
-        branch.name
+        branch.name +
       '</li>'
   )}</ul>`;
 }

@@ -23,7 +23,7 @@ function displayRepositories() {
 
           '<a href="#" data-repository="' +
             r.name + '" data-username="' + document.getElementById('username').value  +
-          '" onclick=getCommits(this)>Get Commits</a> - ' + 
+          '" onclick=getBranches(this)>Get Branches</a>' + 
           '</li>'
     )
     .join('')}</ul>`;
